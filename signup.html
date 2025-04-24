@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - ChatBOT</title>
+    <link rel="icon" type="image/x-icon" href="static/favicon.ico">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'space-blue': '#0B0C10',
+                        'slate-gray': '#1F2833',
+                        'neon-magenta': '#FF0B55',
+                        'electric-cyan': '#66FCF1',
+                        'frost-white': '#45A29E',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        pulse: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.7' },
+                        },
+                        glow: {
+                            '0%, 100%': { boxShadow: '0 0 5px rgba(102, 252, 241, 0.5)' },
+                            '50%': { boxShadow: '0 0 15px rgba(102, 252, 241, 0.8)' },
+                        },
+                    },
+                    animation: {
+                        fadeIn: 'fadeIn 0.5s ease-out',
+                        slideIn: 'slideIn 0.5s ease-out',
+                        pulse: 'pulse 2s infinite',
+                        glow: 'glow 2s infinite',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .auth-card {
+            background: linear-gradient(135deg, #2A3448 0%, #1A1F2E 100%);
+            border: 2px solid #66FCF1;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(102, 252, 241, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .auth-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(102, 252, 241, 0.6);
+        }
+
+        .input-field {
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            box-shadow: 0 0 0 2px #66FCF1;
+            border-color: #66FCF1;
+            background-color: #2A3448;
+        }
+    </style>
+</head>
+<body class="bg-space-blue font-inter flex justify-center items-center min-h-screen">
+    <div class="auth-card w-full max-w-md p-8 animate-fadeIn">
+        <h2 class="text-3xl font-bold text-electric-cyan mb-6 text-center animate-slideIn">
+            <i class="fa-solid fa-user-plus mr-2"></i>Sign Up
+        </h2>
+        <form id="signupForm" class="space-y-4">
+            <input type="text" id="name" placeholder="Full Name" required class="input-field w-full bg-slate-gray text-frost-white border border-space-blue rounded-lg px-4 py-3 focus:outline-none placeholder-gray-400">
+            <input type="email" id="email" placeholder="Email" required class="input-field w-full bg-slate-gray text-frost-white border border-space-blue rounded-lg px-4 py-3 focus:outline-none placeholder-gray-400">
+            <input type="password" id="password" placeholder="Password" required class="input-field w-full bg-slate-gray text-frost-white border border-space-blue rounded-lg px-4 py-3 focus:outline-none placeholder-gray-400">
+            <button type="submit" class="w-full bg-neon-magenta text-space-blue font-bold py-3 px-6 rounded-lg flex items-center justify-center transition-colors hover:bg-neon-magenta/80 transform hover:scale-105">
+                <i class="fa-solid fa-check mr-2"></i>Sign Up
+            </button>
+        </form>
+        <div class="text-center mt-4 text-sm text-frost-white animate-slideIn" style="animation-delay: 0.2s;">
+            <p>Already have an account? <a href="/login" class="text-neon-magenta hover:text-electric-cyan transition-colors">Login</a></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const response = await fetch("/signup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, password })
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert(result.message);
+                window.location.href = result.redirect;  // Redirect to login page
+            } else {
+                alert(result.error);
+            }
+        });
+    </script>
+</body>
+</html>

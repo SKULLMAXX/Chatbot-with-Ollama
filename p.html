@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Privacy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="static/favicon.ico">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'space-blue': '#0B0C10',
+                        'slate-gray': '#1F2833',
+                        'neon-magenta': '#FF0B55',
+                        'electric-cyan': '#66FCF1',
+                        'frost-white': '#45A29E',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        pulse: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.7' },
+                        },
+                        glow: {
+                            '0%, 100%': { boxShadow: '0 0 5px rgba(102, 252, 241, 0.5)' },
+                            '50%': { boxShadow: '0 0 15px rgba(102, 252, 241, 0.8)' },
+                        },
+                    },
+                    animation: {
+                        fadeIn: 'fadeIn 0.5s ease-out',
+                        slideIn: 'slideIn 0.5s ease-out',
+                        pulse: 'pulse 2s infinite',
+                        glow: 'glow 2s infinite',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .scrollbar-thin::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-track {
+            background: rgba(42, 52, 72, 0.5);
+            border-radius: 10px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+            background-color: #FF0B55;
+            border-radius: 10px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+            background-color: #66FCF1;
+        }
+        .scrollbar-thin {
+            scrollbar-width: thin;
+            scrollbar-color: #FF0B55 rgba(42, 52, 72, 0.5);
+        }
+
+        .content-card {
+            background: linear-gradient(135deg, #2A3448 0%, #1A1F2E 100%);
+            border: 2px solid #66FCF1;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(102, 252, 241, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(102, 252, 241, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-space-blue text-frost-white font-inter p-8">
+    <div class="max-w-3xl mx-auto content-card p-8 animate-fadeIn">
+        <!-- Header -->
+        <h1 class="text-4xl font-bold text-electric-cyan mb-6 text-center animate-slideIn">
+            <i class="fa-solid fa-file-contract mr-2"></i>Terms & Privacy
+        </h1>
+        
+        <!-- Terms of Service Section -->
+        <div class="mb-8 animate-slideIn" style="animation-delay: 0.2s;">
+            <h2 class="text-2xl font-semibold text-neon-magenta mb-4">Terms of Service</h2>
+            <p class="text-frost-white leading-relaxed">
+                By using our chatbot, you agree to these terms. Please read them carefully to understand your rights and obligations. We reserve the right to modify these terms at any time. Your continued use of the service constitutes acceptance of any changes.
+            </p>
+            <ul class="list-disc list-inside text-frost-white mt-4 pl-4">
+                <li>You must be at least 13 years old to use this service.</li>
+                <li>Do not use the chatbot for illegal or harmful purposes.</li>
+                <li>We are not responsible for any misuse of the service.</li>
+            </ul>
+        </div>
+
+        <!-- Privacy Policy Section -->
+        <div class="mb-8 animate-slideIn" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-semibold text-neon-magenta mb-4">Privacy Policy</h2>
+            <p class="text-frost-white leading-relaxed">
+                We collect and process data to improve user experience. Your privacy is important to us, and we are committed to protecting your personal information. Please review our policy to understand how we handle your data.
+            </p>
+            <ul class="list-disc list-inside text-frost-white mt-4 pl-4">
+                <li>We collect minimal data necessary for functionality.</li>
+                <li>Your data is encrypted and stored securely.</li>
+                <li>We do not share your data with third parties without your consent.</li>
+            </ul>
+        </div>
+
+        <!-- Back to Chat Button -->
+        <div class="text-center animate-slideIn" style="animation-delay: 0.6s;">
+            <a href="/" class="inline-block px-6 py-3 bg-neon-magenta text-space-blue rounded-lg shadow hover:bg-neon-magenta/80 transition duration-300 transform hover:scale-105 font-semibold">
+                <i class="fa-solid fa-arrow-left mr-2"></i>Back to Chat
+            </a>
+        </div>
+    </div>
+</body>
+</html>
